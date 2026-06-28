@@ -119,7 +119,6 @@ function StampBadge({ size = 92, style }) {
       <circle cx="50" cy="50" r="46" fill="none" stroke="#c1440e" strokeWidth="2" strokeDasharray="3 4" opacity="0.8" />
       <circle cx="50" cy="50" r="38" fill="none" stroke="#c1440e" strokeWidth="1.2" opacity="0.6" />
       <path id="stampArcTop" d="M 18 50 A 32 32 0 0 1 82 50" fill="none" />
-      <path id="stampArcBottom" d="M 22 62 A 28 28 0 0 0 78 62" fill="none" />
       <text fontFamily="'DM Mono', monospace" fontSize="8.4" fontWeight="500" fill="#c1440e" letterSpacing="2">
         <textPath href="#stampArcTop" startOffset="50%" textAnchor="middle">LAWCTOPUS</textPath>
       </text>
@@ -256,66 +255,39 @@ export default function LawctopusLanding() {
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap');
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
         body { background: #FAFAF7; }
-
         .lc-root { font-family: 'DM Sans', sans-serif; position: relative; }
         .lc-root button { font: inherit; }
-
         .lc-root::before {
-          content: '';
-          position: fixed; inset: 0; z-index: 0; pointer-events: none;
+          content: ''; position: fixed; inset: 0; z-index: 0; pointer-events: none;
           opacity: 0.05; mix-blend-mode: multiply;
           background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
         }
-
         .lc-root :focus { outline: none; }
-        .lc-root :focus-visible {
-          outline: 2px solid #c1440e;
-          outline-offset: 3px;
-          border-radius: 3px;
-        }
-
+        .lc-root :focus-visible { outline: 2px solid #c1440e; outline-offset: 3px; border-radius: 3px; }
         @media (prefers-reduced-motion: reduce) {
           .lc-root * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
         }
-
-        .lc-squiggle {
-          text-decoration: underline;
-          text-decoration-style: wavy;
-          text-decoration-color: #c1440e;
-          text-underline-offset: 6px;
-          font-style: italic;
-        }
-
+        .lc-squiggle { text-decoration: underline; text-decoration-style: wavy; text-decoration-color: #c1440e; text-underline-offset: 6px; font-style: italic; }
         .lc-nav {
           position: fixed; top: 0; left: 0; right: 0; z-index: 90;
           padding: 0 28px; height: 56px;
           display: flex; align-items: center; justify-content: space-between;
-          background: rgba(250,250,247,0.92);
-          backdrop-filter: blur(8px);
-          border-bottom: 1px solid #e5e3dc;
-          transition: box-shadow .3s;
+          background: rgba(250,250,247,0.92); backdrop-filter: blur(8px);
+          border-bottom: 1px solid #e5e3dc; transition: box-shadow .3s;
         }
         .lc-nav.scrolled { box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
         .lc-nav-brand { font-family: 'DM Mono', monospace; font-size: 13px; font-weight: 500; letter-spacing: 0.1em; color: #1a1a1a; background: none; border: none; cursor: pointer; }
         .lc-nav-links { display: flex; align-items: center; gap: 24px; }
         .lc-nav-link { font-family: 'DM Sans', sans-serif; font-size: 13px; color: #666; cursor: pointer; background: none; border: none; transition: color .2s; padding: 4px 0; }
         .lc-nav-link:hover { color: #1a1a1a; }
-        .lc-nav-enroll {
-          font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 600;
-          background: #c1440e; color: #fff; border: none; cursor: pointer;
-          padding: 8px 18px; border-radius: 6px;
-          transition: background .2s, transform .15s;
-        }
+        .lc-nav-enroll { font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 600; background: #c1440e; color: #fff; border: none; cursor: pointer; padding: 8px 18px; border-radius: 6px; transition: background .2s, transform .15s; }
         .lc-nav-enroll:hover { background: #a83a0c; transform: translateY(-1px); }
-
         .lc-burger { display: none; background: none; border: none; cursor: pointer; padding: 8px; flex-direction: column; gap: 4px; }
         .lc-burger span { display: block; width: 20px; height: 2px; background: #1a1a1a; transition: transform .25s, opacity .25s; }
         .lc-burger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
         .lc-burger.open span:nth-child(2) { opacity: 0; }
         .lc-burger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
-
         .lc-mobile-menu {
           position: fixed; top: 56px; left: 0; right: 0; z-index: 89;
           background: #FAFAF7; border-bottom: 1px solid #e5e3dc;
@@ -324,65 +296,29 @@ export default function LawctopusLanding() {
         }
         .lc-mobile-menu .lc-nav-link { text-align: left; padding: 12px 0; border-bottom: 1px solid #f0ede8; font-size: 14px; }
         .lc-mobile-menu .lc-nav-enroll { margin-top: 14px; padding: 12px; text-align: center; }
-
         .lc-section { padding: 96px 0; border-bottom: 1px solid #e5e3dc; }
         .lc-wrap { max-width: 1080px; margin: 0 auto; padding: 0 28px; }
         .lc-wrap-narrow { max-width: 720px; margin: 0 auto; padding: 0 28px; }
-
-        .lc-label {
-          display: inline-flex; align-items: center; gap: 6px;
-          font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 500;
-          color: #c1440e; letter-spacing: 0.08em; text-transform: uppercase;
-          margin-bottom: 14px;
-        }
+        .lc-label { display: inline-flex; align-items: center; gap: 6px; font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 500; color: #c1440e; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 14px; }
         .lc-label::before { content: '↳'; font-size: 13px; }
-
         .lc-hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 88px 0 60px; }
         .lc-hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
         .lc-h1 { font-family: 'Lora', Georgia, serif; font-size: clamp(32px, 4.5vw, 52px); font-weight: 500; line-height: 1.2; margin-bottom: 22px; letter-spacing: -0.01em; }
         .lc-lede { font-family: 'DM Sans', sans-serif; font-size: 16px; color: #555; line-height: 1.8; margin-bottom: 32px; }
-
-        .lc-intro {
-          opacity: 0; transform: translateY(16px);
-          transition: opacity .6s ease, transform .6s ease;
-        }
+        .lc-intro { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
         .lc-intro.in { opacity: 1; transform: none; }
-
         .lc-stats { display: flex; gap: 0; margin-bottom: 36px; flex-wrap: wrap; }
         .lc-stat { flex: 1; min-width: 86px; padding: 16px 20px; border-left: 1px solid #e5e3dc; }
         .lc-stat:first-child { border-left: none; padding-left: 0; }
         .lc-stat-num { font-family: 'Lora', serif; font-size: 26px; font-weight: 600; color: #1a1a1a; }
         .lc-stat-lbl { font-family: 'DM Sans', sans-serif; font-size: 11px; color: #999; margin-top: 2px; }
-
-        .lc-btn-primary {
-          font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 14px;
-          background: #1a1a1a; color: #FAFAF7; border: none; cursor: pointer;
-          padding: 13px 28px; border-radius: 6px;
-          transition: background .2s, transform .15s;
-          text-decoration: none; display: inline-block;
-        }
+        .lc-btn-primary { font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 14px; background: #1a1a1a; color: #FAFAF7; border: none; cursor: pointer; padding: 13px 28px; border-radius: 6px; transition: background .2s, transform .15s; text-decoration: none; display: inline-block; }
         .lc-btn-primary:hover { background: #c1440e; transform: translateY(-2px); }
-        .lc-btn-ghost {
-          font-family: 'DM Sans', sans-serif; font-size: 14px; color: #555;
-          background: none; border: 1px solid #ccc; cursor: pointer;
-          padding: 13px 22px; border-radius: 6px;
-          transition: border-color .2s, color .2s;
-        }
+        .lc-btn-ghost { font-family: 'DM Sans', sans-serif; font-size: 14px; color: #555; background: none; border: 1px solid #ccc; cursor: pointer; padding: 13px 22px; border-radius: 6px; transition: border-color .2s, color .2s; }
         .lc-btn-ghost:hover { border-color: #1a1a1a; color: #1a1a1a; }
-
-        .lc-redline {
-          background: #fff; border: 1px solid #e0ddd6;
-          border-radius: 3px; padding: 28px 28px 22px;
-          position: relative; box-shadow: 2px 3px 0 #e0ddd6;
-        }
-        .lc-redline::before {
-          content: ''; position: absolute; top: 0; bottom: 0; left: 0;
-          width: 32px; background: #fff8f5; border-right: 1px solid #f0ebe4;
-        }
-        .lc-redline-meta {
-          font-family: 'DM Mono', monospace; font-size: 10px; color: #bbb;
-          margin-bottom: 18px; display: flex; align-items: center; gap: 8px; padding-left: 40px;
-        }
+        .lc-redline { background: #fff; border: 1px solid #e0ddd6; border-radius: 3px; padding: 28px 28px 22px; position: relative; box-shadow: 2px 3px 0 #e0ddd6; }
+        .lc-redline::before { content: ''; position: absolute; top: 0; bottom: 0; left: 0; width: 32px; background: #fff8f5; border-right: 1px solid #f0ebe4; }
+        .lc-redline-meta { font-family: 'DM Mono', monospace; font-size: 10px; color: #bbb; margin-bottom: 18px; display: flex; align-items: center; gap: 8px; padding-left: 40px; }
         .lc-live { width: 5px; height: 5px; border-radius: 50%; background: #c1440e; animation: lc-pulse 1.8s ease-in-out infinite; display: inline-block; }
         @keyframes lc-pulse { 0%,100%{opacity:1;} 50%{opacity:0.2;} }
         .lc-redline-body { font-family: 'Lora', Georgia, serif; font-size: 15px; line-height: 1.8; min-height: 110px; padding-left: 40px; }
@@ -390,21 +326,15 @@ export default function LawctopusLanding() {
         .lc-ins { color: #1a6b3a; display: block; opacity: 0; animation: lc-ins .5s ease .5s forwards; }
         @keyframes lc-ins { from{opacity:0;transform:translateY(6px);} to{opacity:1;transform:none;} }
         .lc-redline-foot { font-family: 'DM Mono', monospace; font-size: 10px; color: #bbb; margin-top: 16px; padding-top: 12px; border-top: 1px dashed #e5e3dc; padding-left: 40px; }
-
         .lc-feat-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: #e5e3dc; border: 1px solid #e5e3dc; margin-top: 28px; }
         .lc-feat-card { background: #FAFAF7; padding: 28px 24px; transition: background .2s; }
         .lc-feat-card:hover { background: #fff; }
         .lc-feat-icon { font-size: 20px; margin-bottom: 12px; line-height: 1; }
         .lc-feat-title { font-family: 'Lora', Georgia, serif; font-size: 16px; font-weight: 500; margin-bottom: 8px; }
         .lc-feat-desc { font-family: 'DM Sans', sans-serif; font-size: 13px; color: #666; line-height: 1.7; }
-
         .lc-month { border-bottom: 1px solid #e5e3dc; }
         .lc-month:last-child { border-bottom: none; }
-        .lc-month-head {
-          width: 100%; text-align: left; background: none; border: none; cursor: pointer;
-          padding: 20px 0; display: flex; justify-content: space-between; align-items: baseline;
-          gap: 16px; font-family: 'DM Sans', sans-serif; transition: color .2s;
-        }
+        .lc-month-head { width: 100%; text-align: left; background: none; border: none; cursor: pointer; padding: 20px 0; display: flex; justify-content: space-between; align-items: baseline; gap: 16px; font-family: 'DM Sans', sans-serif; transition: color .2s; }
         .lc-month-head:hover .lc-month-title { color: #c1440e; }
         .lc-month-tag { font-family: 'DM Mono', monospace; font-size: 11px; color: #bbb; flex-shrink: 0; }
         .lc-month-title { font-family: 'Lora', Georgia, serif; font-size: 17px; font-weight: 500; color: #1a1a1a; transition: color .2s; }
@@ -418,32 +348,19 @@ export default function LawctopusLanding() {
         .lc-month-list { padding: 0 0 20px 0; list-style: none; }
         .lc-month-list li { font-family: 'DM Sans', sans-serif; font-size: 14px; color: #555; line-height: 1.8; padding: 2px 0 2px 18px; position: relative; }
         .lc-month-list li::before { content: '—'; position: absolute; left: 0; color: #ccc; }
-
         .lc-rev-card { background: #fff; border: 1px solid #e5e3dc; border-radius: 3px; padding: 40px 36px 36px; box-shadow: 2px 3px 0 #e5e3dc; max-width: 600px; margin: 0 auto 28px; min-height: 160px; text-align: center; }
-        .lc-rev-avatar {
-          width: 38px; height: 38px; border-radius: 50%;
-          display: flex; align-items: center; justify-content: center;
-          margin: 0 auto 16px;
-          font-family: 'DM Mono', monospace; font-size: 12px; font-weight: 600; color: #fff;
-          letter-spacing: 0.02em;
-        }
+        .lc-rev-avatar { width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-family: 'DM Mono', monospace; font-size: 12px; font-weight: 600; color: #fff; letter-spacing: 0.02em; }
         .lc-rev-quote { font-family: 'Lora', Georgia, serif; font-size: 19px; line-height: 1.7; color: #1a1a1a; margin-bottom: 20px; font-style: italic; text-align: left; }
         .lc-rev-author { font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 600; }
         .lc-rev-role { font-family: 'DM Mono', monospace; font-size: 11px; color: #bbb; margin-top: 2px; }
         .lc-rev-dots { display: flex; justify-content: center; gap: 8px; }
         .lc-rev-dot { width: 8px; height: 8px; border-radius: 50%; border: 1.5px solid #ccc; background: transparent; cursor: pointer; transition: all .2s; padding: 0; }
         .lc-rev-dot.active { background: #1a1a1a; border-color: #1a1a1a; }
-
         .lc-pricing-grid { display: grid; grid-template-columns: 1fr 360px; gap: 60px; align-items: start; }
         .lc-perk { display: flex; align-items: flex-start; gap: 12px; font-family: 'DM Sans', sans-serif; font-size: 14px; color: #444; padding: 12px 0; border-bottom: 1px solid #f0ede8; }
         .lc-perk:last-child { border-bottom: none; }
         .lc-perk-check { color: #1a6b3a; flex-shrink: 0; font-size: 13px; margin-top: 2px; }
-        .lc-price-card {
-          background: #1a1a1a; color: #FAFAF7;
-          border-radius: 3px; padding: 28px;
-          position: sticky; top: 80px;
-          box-shadow: 4px 5px 0 #c1440e;
-        }
+        .lc-price-card { background: #1a1a1a; color: #FAFAF7; border-radius: 3px; padding: 28px; position: sticky; top: 80px; box-shadow: 4px 5px 0 #c1440e; }
         .lc-price-card-label { font-family: 'DM Mono', monospace; font-size: 10px; color: #888; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; }
         .lc-price-big { font-family: 'Lora', Georgia, serif; font-size: 34px; font-weight: 600; margin-bottom: 4px; }
         .lc-price-was { font-family: 'DM Sans', sans-serif; font-size: 13px; color: #555; text-decoration: line-through; margin-bottom: 20px; }
@@ -452,90 +369,44 @@ export default function LawctopusLanding() {
         .lc-count-box { flex: 1; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 8px 4px; text-align: center; }
         .lc-count-num { font-family: 'DM Mono', monospace; font-size: 18px; font-weight: 500; color: #e8a87c; }
         .lc-count-lbl { font-size: 9px; color: #555; text-transform: uppercase; font-family: 'DM Mono', monospace; }
-        .lc-enroll-big {
-          display: block; width: 100%; text-align: center;
-          background: #c1440e; color: #fff; border: none; cursor: pointer;
-          padding: 14px; border-radius: 4px; font-family: 'DM Sans', sans-serif;
-          font-weight: 600; font-size: 15px; transition: background .2s, transform .15s;
-        }
+        .lc-enroll-big { display: block; width: 100%; text-align: center; background: #c1440e; color: #fff; border: none; cursor: pointer; padding: 14px; border-radius: 4px; font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 15px; transition: background .2s, transform .15s; }
         .lc-enroll-big:hover { background: #a83a0c; transform: translateY(-1px); }
-
         .lc-cta { background: #1a1a1a; color: #FAFAF7; padding: 96px 0; }
         .lc-cta-inner { max-width: 600px; }
         .lc-cta-label { font-family: 'DM Mono', monospace; font-size: 11px; color: #e8a87c; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 18px; display: flex; align-items: center; gap: 6px; }
         .lc-cta-label::before { content: '↳'; }
         .lc-cta-h { font-family: 'Lora', Georgia, serif; font-size: clamp(28px,4vw,44px); font-weight: 500; line-height: 1.2; margin-bottom: 16px; }
         .lc-cta-sub { font-family: 'DM Sans', sans-serif; font-size: 15px; color: #888; line-height: 1.8; margin-bottom: 40px; }
-        .lc-seal {
-          display: inline-flex; align-items: center; justify-content: center;
-          width: 160px; height: 160px; border-radius: 50%;
-          background: #c1440e; color: #fff;
-          font-family: 'Lora', Georgia, serif; font-size: 16px; font-style: italic;
-          text-align: center; line-height: 1.4;
-          border: 2px solid rgba(255,255,255,0.2);
-          cursor: pointer; text-decoration: none;
-          transition: transform .2s, box-shadow .2s;
-          box-shadow: 3px 4px 0 #8c2e07;
-        }
+        .lc-seal { display: inline-flex; align-items: center; justify-content: center; width: 160px; height: 160px; border-radius: 50%; background: #c1440e; color: #fff; font-family: 'Lora', Georgia, serif; font-size: 16px; font-style: italic; text-align: center; line-height: 1.4; border: 2px solid rgba(255,255,255,0.2); cursor: pointer; text-decoration: none; transition: transform .2s, box-shadow .2s; box-shadow: 3px 4px 0 #8c2e07; }
         .lc-seal:hover { transform: rotate(-3deg) scale(1.04); box-shadow: 4px 6px 0 #8c2e07; }
         .lc-seal.stamped { animation: lc-stamp .42s ease; }
         @keyframes lc-stamp { 0%{transform:scale(1) rotate(0);} 30%{transform:scale(0.85) rotate(-8deg);} 70%{transform:scale(1.08) rotate(3deg);} 100%{transform:scale(1) rotate(0);} }
         .lc-cta-contact { font-family: 'DM Sans', sans-serif; font-size: 13px; color: #555; margin-top: 44px; line-height: 1.9; }
         .lc-cta-contact a { color: #e8a87c; text-underline-offset: 3px; }
         .lc-copy { font-family: 'DM Mono', monospace; font-size: 10px; color: #444; margin-top: 48px; }
-
         .lc-price-hint { font-family: 'DM Sans', sans-serif; font-size: 13px; color: #888; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
         .lc-price-hint s { color: #bbb; }
         .lc-price-hint strong { color: #1a6b3a; font-size: 15px; }
-
         .lc-h2 { font-family: 'Lora', Georgia, serif; font-size: clamp(22px, 3vw, 30px); font-weight: 500; line-height: 1.3; margin-bottom: 8px; }
         .lc-h2-sub { font-family: 'DM Sans', sans-serif; font-size: 14px; color: #888; margin-bottom: 32px; }
-
         .lc-photo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 28px; }
-        .lc-photo {
-          position: relative; overflow: hidden; border-radius: 3px;
-          aspect-ratio: 4 / 5; background: #e5e3dc;
-          box-shadow: 2px 3px 0 #e0ddd6; border: 1px solid #e0ddd6;
-        }
-        .lc-photo img {
-          width: 100%; height: 100%; object-fit: cover; display: block;
-          filter: grayscale(45%) sepia(12%) saturate(85%) contrast(1.05);
-          transition: filter .4s ease, transform .5s ease;
-        }
+        .lc-photo { position: relative; overflow: hidden; border-radius: 3px; aspect-ratio: 4 / 5; background: #e5e3dc; box-shadow: 2px 3px 0 #e0ddd6; border: 1px solid #e0ddd6; }
+        .lc-photo img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(45%) sepia(12%) saturate(85%) contrast(1.05); transition: filter .4s ease, transform .5s ease; }
         .lc-photo:hover img { filter: grayscale(15%) sepia(6%) saturate(95%) contrast(1.05); transform: scale(1.035); }
-        .lc-photo::after {
-          content: ''; position: absolute; inset: 0; pointer-events: none;
-          background: linear-gradient(180deg, rgba(193,68,14,0) 55%, rgba(26,26,26,0.62) 100%);
-        }
-        .lc-photo-caption {
-          position: absolute; left: 14px; right: 14px; bottom: 12px; z-index: 2;
-          color: #fff; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; line-height: 1.4;
-        }
+        .lc-photo::after { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, rgba(193,68,14,0) 55%, rgba(26,26,26,0.62) 100%); }
+        .lc-photo-caption { position: absolute; left: 14px; right: 14px; bottom: 12px; z-index: 2; color: #fff; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; line-height: 1.4; }
         .lc-photo-credits { font-family: 'DM Mono', monospace; font-size: 10px; color: #bbb; margin-top: 16px; }
-        @media (max-width: 700px) {
-          .lc-photo-grid { grid-template-columns: 1fr; }
-        }
-
-        .lc-mobile-cta {
-          position: fixed; left: 0; right: 0; bottom: 0; z-index: 80;
-          display: none; align-items: center; justify-content: space-between; gap: 12px;
-          background: #fff; border-top: 1px solid #e5e3dc;
-          padding: 12px 16px; box-shadow: 0 -6px 20px rgba(0,0,0,0.08);
-        }
+        .lc-mobile-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 80; display: none; align-items: center; justify-content: space-between; gap: 12px; background: #fff; border-top: 1px solid #e5e3dc; padding: 12px 16px; box-shadow: 0 -6px 20px rgba(0,0,0,0.08); }
         .lc-mobile-cta-price { font-family: 'Lora', Georgia, serif; font-size: 16px; font-weight: 600; }
         .lc-mobile-cta-price span { display: block; font-family: 'DM Sans', sans-serif; font-size: 10px; color: #999; font-weight: 400; }
-        .lc-mobile-cta button {
-          font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 13px;
-          background: #c1440e; color: #fff; border: none; cursor: pointer;
-          padding: 11px 18px; border-radius: 6px; flex-shrink: 0;
-        }
-
+        .lc-mobile-cta button { font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 13px; background: #c1440e; color: #fff; border: none; cursor: pointer; padding: 11px 18px; border-radius: 6px; flex-shrink: 0; }
         @media (max-width: 860px) {
           .lc-hero-grid { grid-template-columns: 1fr; gap: 40px; }
           .lc-feat-grid { grid-template-columns: 1fr 1fr; }
           .lc-pricing-grid { grid-template-columns: 1fr; }
           .lc-price-card { position: static; }
         }
+        @media (max-width: 700px) { .lc-photo-grid { grid-template-columns: 1fr; } }
         @media (max-width: 600px) {
           .lc-feat-grid { grid-template-columns: 1fr; }
           .lc-nav-links { display: none; }
@@ -543,7 +414,6 @@ export default function LawctopusLanding() {
           .lc-mobile-cta { display: flex; }
           .lc-section { padding: 64px 0; }
           .lc-hero { padding-bottom: 88px; }
-          body { padding-bottom: 0; }
         }
       `}</style>
 
@@ -556,7 +426,6 @@ export default function LawctopusLanding() {
         Skip to main content
       </a>
 
-      {/* NAV */}
       <nav className={`lc-nav${scrollY > 20 ? " scrolled" : ""}`} aria-label="Primary">
         <button className="lc-nav-brand" onClick={() => window.scrollTo({ top: 0, behavior: reducedMotion ? "auto" : "smooth" })} aria-label="Back to top">
           Lawctopus
@@ -620,17 +489,13 @@ export default function LawctopusLanding() {
                 </div>
               </div>
 
-              {/* REDLINE CARD */}
               <div className={`lc-intro${loaded ? " in" : ""}`} style={{ transitionDelay: "120ms", position: "relative" }}>
                 <div style={{ marginBottom: 10 }}>
                   <span style={{ fontFamily: "'DM Mono',monospace", fontSize: 11, color: "#bbb" }}>a real clause, being fixed in real time</span>
                 </div>
                 <StampBadge
                   size={88}
-                  style={{
-                    position: "absolute", top: -28, right: -16, zIndex: 2,
-                    transform: "rotate(-9deg)", filter: "drop-shadow(2px 3px 0 rgba(0,0,0,0.05))",
-                  }}
+                  style={{ position: "absolute", top: -28, right: -16, zIndex: 2, transform: "rotate(-9deg)", filter: "drop-shadow(2px 3px 0 rgba(0,0,0,0.05))" }}
                 />
                 <div className="lc-redline" role="img" aria-label={`Contract clause example: original wording "${clauses[clauseIdx].b}" revised to "${clauses[clauseIdx].a}"`}>
                   <div className="lc-redline-meta">
@@ -650,7 +515,7 @@ export default function LawctopusLanding() {
           </div>
         </section>
 
-        {/* PHOTO STRIP */}
+        {/* PHOTOS */}
         <section className="lc-section" aria-label="What the work looks like">
           <div className="lc-wrap">
             <Reveal>
@@ -850,7 +715,6 @@ export default function LawctopusLanding() {
         </section>
       </main>
 
-      {/* sticky mobile CTA */}
       <div className="lc-mobile-cta">
         <div className="lc-mobile-cta-price">
           Rs. 24,999<span>was Rs. 60,000</span>
