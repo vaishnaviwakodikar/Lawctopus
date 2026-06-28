@@ -32,8 +32,6 @@ const perks = [
   "Completion + merit certificate",
 ];
 
-// Free-to-use (Unsplash License — no permission/attribution required) photography,
-// verified by fetching the source photo pages. Credited anyway, as good practice.
 const photos = [
   {
     src: "https://images.unsplash.com/photo-1423592707957-3b212afa6733?q=80&w=900&auto=format&fit=crop",
@@ -115,22 +113,13 @@ function Reveal({ children, delay = 0 }) {
   );
 }
 
-/** Small hand-stamped "verified" badge — original SVG art, echoes the seal in the closing CTA. */
 function StampBadge({ size = 92, style }) {
   return (
     <svg width={size} height={size} viewBox="0 0 100 100" style={style} aria-hidden="true">
       <circle cx="50" cy="50" r="46" fill="none" stroke="#c1440e" strokeWidth="2" strokeDasharray="3 4" opacity="0.8" />
       <circle cx="50" cy="50" r="38" fill="none" stroke="#c1440e" strokeWidth="1.2" opacity="0.6" />
-      <path
-        id="stampArcTop"
-        d="M 18 50 A 32 32 0 0 1 82 50"
-        fill="none"
-      />
-      <path
-        id="stampArcBottom"
-        d="M 22 62 A 28 28 0 0 0 78 62"
-        fill="none"
-      />
+      <path id="stampArcTop" d="M 18 50 A 32 32 0 0 1 82 50" fill="none" />
+      <path id="stampArcBottom" d="M 22 62 A 28 28 0 0 0 78 62" fill="none" />
       <text fontFamily="'DM Mono', monospace" fontSize="8.4" fontWeight="500" fill="#c1440e" letterSpacing="2">
         <textPath href="#stampArcTop" startOffset="50%" textAnchor="middle">LAWCTOPUS</textPath>
       </text>
@@ -144,7 +133,6 @@ function StampBadge({ size = 92, style }) {
   );
 }
 
-/** Accordion panel that animates to its real content height instead of a hardcoded max-height. */
 function MonthPanel({ open, children }) {
   const innerRef = useRef(null);
   const [height, setHeight] = useState(0);
@@ -158,16 +146,59 @@ function MonthPanel({ open, children }) {
     </div>
   );
 }
+
 function FeatIcon({ name }) {
   const icons = {
-    contract: "📄",
-    briefcase: "💼",
-    clock: "⏱️",
-    infinity: "♾️",
-    target: "🎯",
-    badge: "🏅",
+    contract: (
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="3" y="1" width="11" height="15" rx="1" stroke="#1a1a1a" strokeWidth="1.4"/>
+        <line x1="6" y1="5.5" x2="11" y2="5.5" stroke="#c1440e" strokeWidth="1.4" strokeLinecap="round"/>
+        <line x1="6" y1="8.5" x2="11" y2="8.5" stroke="#1a1a1a" strokeWidth="1.2" strokeLinecap="round" strokeDasharray="1.5 1.5"/>
+        <line x1="6" y1="11.5" x2="9" y2="11.5" stroke="#1a1a1a" strokeWidth="1.2" strokeLinecap="round" strokeDasharray="1.5 1.5"/>
+        <path d="M13 12 L17 16" stroke="#1a6b3a" strokeWidth="1.4" strokeLinecap="round"/>
+        <circle cx="12.5" cy="11.5" r="2" stroke="#1a6b3a" strokeWidth="1.2"/>
+      </svg>
+    ),
+    briefcase: (
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="2" y="7" width="16" height="10" rx="1.5" stroke="#1a1a1a" strokeWidth="1.4"/>
+        <path d="M7 7V5.5C7 4.67 7.67 4 8.5 4h3C12.33 4 13 4.67 13 5.5V7" stroke="#1a1a1a" strokeWidth="1.4"/>
+        <line x1="2" y1="12" x2="18" y2="12" stroke="#1a1a1a" strokeWidth="1.2" strokeDasharray="1.5 1.5"/>
+      </svg>
+    ),
+    clock: (
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="10" cy="10" r="7.5" stroke="#1a1a1a" strokeWidth="1.4"/>
+        <line x1="10" y1="5.5" x2="10" y2="10" stroke="#c1440e" strokeWidth="1.5" strokeLinecap="round"/>
+        <line x1="10" y1="10" x2="13" y2="12" stroke="#1a1a1a" strokeWidth="1.4" strokeLinecap="round"/>
+        <circle cx="10" cy="10" r="1" fill="#1a1a1a"/>
+      </svg>
+    ),
+    infinity: (
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M7.5 10C7.5 10 5.5 7 3.5 7C1.5 7 1 8.5 1 10C1 11.5 1.5 13 3.5 13C5.5 13 8.5 10 10 10C11.5 10 14.5 13 16.5 13C18.5 13 19 11.5 19 10C19 8.5 18.5 7 16.5 7C14.5 7 12.5 10 12.5 10" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round"/>
+      </svg>
+    ),
+    target: (
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="10" cy="10" r="7.5" stroke="#1a1a1a" strokeWidth="1.4"/>
+        <circle cx="10" cy="10" r="4.5" stroke="#1a1a1a" strokeWidth="1.2"/>
+        <circle cx="10" cy="10" r="1.5" fill="#c1440e"/>
+        <line x1="10" y1="1" x2="10" y2="3.5" stroke="#1a1a1a" strokeWidth="1.4" strokeLinecap="round"/>
+        <line x1="10" y1="16.5" x2="10" y2="19" stroke="#1a1a1a" strokeWidth="1.4" strokeLinecap="round"/>
+        <line x1="1" y1="10" x2="3.5" y2="10" stroke="#1a1a1a" strokeWidth="1.4" strokeLinecap="round"/>
+        <line x1="16.5" y1="10" x2="19" y2="10" stroke="#1a1a1a" strokeWidth="1.4" strokeLinecap="round"/>
+      </svg>
+    ),
+    badge: (
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="10" cy="8" r="5.5" stroke="#1a1a1a" strokeWidth="1.4"/>
+        <path d="M6.5 12.5L5 18L10 15.5L15 18L13.5 12.5" stroke="#1a1a1a" strokeWidth="1.4" strokeLinejoin="round"/>
+        <path d="M8 8L9.5 9.5L12.5 6.5" stroke="#c1440e" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
+      </svg>
+    ),
   };
-  return <span role="img" aria-hidden="true">{icons[name] || "•"}</span>;
+  return <span aria-hidden="true">{icons[name] || null}</span>;
 }
 
 export default function LawctopusLanding() {
@@ -231,7 +262,6 @@ export default function LawctopusLanding() {
         .lc-root { font-family: 'DM Sans', sans-serif; position: relative; }
         .lc-root button { font: inherit; }
 
-        /* subtle paper-grain texture — original inline SVG noise, no external image requests */
         .lc-root::before {
           content: '';
           position: fixed; inset: 0; z-index: 0; pointer-events: none;
@@ -239,7 +269,6 @@ export default function LawctopusLanding() {
           background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
         }
 
-        /* accessible focus ring everywhere, mouse users unaffected */
         .lc-root :focus { outline: none; }
         .lc-root :focus-visible {
           outline: 2px solid #c1440e;
@@ -251,7 +280,6 @@ export default function LawctopusLanding() {
           .lc-root * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
         }
 
-        /* squiggly underline for the hero em */
         .lc-squiggle {
           text-decoration: underline;
           text-decoration-style: wavy;
@@ -260,7 +288,6 @@ export default function LawctopusLanding() {
           font-style: italic;
         }
 
-        /* nav */
         .lc-nav {
           position: fixed; top: 0; left: 0; right: 0; z-index: 90;
           padding: 0 28px; height: 56px;
@@ -283,7 +310,6 @@ export default function LawctopusLanding() {
         }
         .lc-nav-enroll:hover { background: #a83a0c; transform: translateY(-1px); }
 
-        /* mobile menu toggle */
         .lc-burger { display: none; background: none; border: none; cursor: pointer; padding: 8px; flex-direction: column; gap: 4px; }
         .lc-burger span { display: block; width: 20px; height: 2px; background: #1a1a1a; transition: transform .25s, opacity .25s; }
         .lc-burger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
@@ -299,11 +325,6 @@ export default function LawctopusLanding() {
         .lc-mobile-menu .lc-nav-link { text-align: left; padding: 12px 0; border-bottom: 1px solid #f0ede8; font-size: 14px; }
         .lc-mobile-menu .lc-nav-enroll { margin-top: 14px; padding: 12px; text-align: center; }
 
-        /* progress bar */
-        .lc-progress { height: 3px; background: #e5e3dc; }
-        .lc-progress-fill { height: 100%; background: #c1440e; transition: width .1s linear; border-radius: 0 2px 2px 0; }
-
-        /* sections */
         .lc-section { padding: 96px 0; border-bottom: 1px solid #e5e3dc; }
         .lc-wrap { max-width: 1080px; margin: 0 auto; padding: 0 28px; }
         .lc-wrap-narrow { max-width: 720px; margin: 0 auto; padding: 0 28px; }
@@ -316,7 +337,6 @@ export default function LawctopusLanding() {
         }
         .lc-label::before { content: '↳'; font-size: 13px; }
 
-        /* hero */
         .lc-hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 88px 0 60px; }
         .lc-hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
         .lc-h1 { font-family: 'Lora', Georgia, serif; font-size: clamp(32px, 4.5vw, 52px); font-weight: 500; line-height: 1.2; margin-bottom: 22px; letter-spacing: -0.01em; }
@@ -352,16 +372,12 @@ export default function LawctopusLanding() {
 
         .lc-redline {
           background: #fff; border: 1px solid #e0ddd6;
-          border-radius: 3px;
-          padding: 28px 28px 22px;
-          position: relative;
-          box-shadow: 2px 3px 0 #e0ddd6;
+          border-radius: 3px; padding: 28px 28px 22px;
+          position: relative; box-shadow: 2px 3px 0 #e0ddd6;
         }
         .lc-redline::before {
-          content: '';
-          position: absolute; top: 0; bottom: 0; left: 0;
-          width: 32px; background: #fff8f5;
-          border-right: 1px solid #f0ebe4;
+          content: ''; position: absolute; top: 0; bottom: 0; left: 0;
+          width: 32px; background: #fff8f5; border-right: 1px solid #f0ebe4;
         }
         .lc-redline-meta {
           font-family: 'DM Mono', monospace; font-size: 10px; color: #bbb;
@@ -378,7 +394,7 @@ export default function LawctopusLanding() {
         .lc-feat-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: #e5e3dc; border: 1px solid #e5e3dc; margin-top: 28px; }
         .lc-feat-card { background: #FAFAF7; padding: 28px 24px; transition: background .2s; }
         .lc-feat-card:hover { background: #fff; }
-        .lc-feat-icon { font-size: 20px; margin-bottom: 12px; }
+        .lc-feat-icon { font-size: 20px; margin-bottom: 12px; line-height: 1; }
         .lc-feat-title { font-family: 'Lora', Georgia, serif; font-size: 16px; font-weight: 500; margin-bottom: 8px; }
         .lc-feat-desc { font-family: 'DM Sans', sans-serif; font-size: 13px; color: #666; line-height: 1.7; }
 
@@ -387,8 +403,7 @@ export default function LawctopusLanding() {
         .lc-month-head {
           width: 100%; text-align: left; background: none; border: none; cursor: pointer;
           padding: 20px 0; display: flex; justify-content: space-between; align-items: baseline;
-          gap: 16px; font-family: 'DM Sans', sans-serif;
-          transition: color .2s;
+          gap: 16px; font-family: 'DM Sans', sans-serif; transition: color .2s;
         }
         .lc-month-head:hover .lc-month-title { color: #c1440e; }
         .lc-month-tag { font-family: 'DM Mono', monospace; font-size: 11px; color: #bbb; flex-shrink: 0; }
@@ -476,7 +491,6 @@ export default function LawctopusLanding() {
         .lc-h2 { font-family: 'Lora', Georgia, serif; font-size: clamp(22px, 3vw, 30px); font-weight: 500; line-height: 1.3; margin-bottom: 8px; }
         .lc-h2-sub { font-family: 'DM Sans', sans-serif; font-size: 14px; color: #888; margin-bottom: 32px; }
 
-        /* photo strip — real photography, tinted to sit inside the warm/ink palette */
         .lc-photo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 28px; }
         .lc-photo {
           position: relative; overflow: hidden; border-radius: 3px;
@@ -502,7 +516,6 @@ export default function LawctopusLanding() {
           .lc-photo-grid { grid-template-columns: 1fr; }
         }
 
-        /* sticky mobile CTA bar */
         .lc-mobile-cta {
           position: fixed; left: 0; right: 0; bottom: 0; z-index: 80;
           display: none; align-items: center; justify-content: space-between; gap: 12px;
@@ -534,7 +547,6 @@ export default function LawctopusLanding() {
         }
       `}</style>
 
-      {/* skip link for keyboard / screen-reader users */}
       <a
         href="#main"
         style={{ position: "absolute", left: -9999, top: 0 }}
@@ -579,7 +591,6 @@ export default function LawctopusLanding() {
         <section className="lc-hero lc-section" style={{ borderBottom: "1px solid #e5e3dc" }} aria-label="Introduction">
           <div className="lc-wrap">
             <div className="lc-hero-grid">
-              {/* LEFT */}
               <div className={`lc-intro${loaded ? " in" : ""}`}>
                 <div className="lc-label">New batch · July 1, 2026</div>
                 <h1 className="lc-h1">
@@ -589,7 +600,6 @@ export default function LawctopusLanding() {
                 <p className="lc-lede">
                   54 live sessions with practising lawyers. Draft 24+ real agreements — NDAs, MSAs, IP, real estate. Get your first Upwork client with guidance from someone who's actually done it.
                 </p>
-
                 <div className="lc-stats">
                   {[["20k+", "learners"], ["4.8/5", "avg rating"], ["54", "live sessions"], ["24+", "contracts"]].map(([n, l]) => (
                     <div key={l} className="lc-stat">
@@ -598,12 +608,10 @@ export default function LawctopusLanding() {
                     </div>
                   ))}
                 </div>
-
                 <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginBottom: 20 }}>
                   <button className="lc-btn-primary" onClick={openReg}>Enroll now →</button>
                   <button className="lc-btn-ghost" onClick={() => scrollTo("curriculum")}>See the curriculum</button>
                 </div>
-
                 <div className="lc-price-hint">
                   <s>Rs. 60,000</s>
                   <span aria-hidden="true">→</span>
@@ -642,7 +650,7 @@ export default function LawctopusLanding() {
           </div>
         </section>
 
-        {/* PHOTO STRIP — real photography, tinted to match the page */}
+        {/* PHOTO STRIP */}
         <section className="lc-section" aria-label="What the work looks like">
           <div className="lc-wrap">
             <Reveal>
@@ -746,11 +754,7 @@ export default function LawctopusLanding() {
             </Reveal>
             <Reveal delay={80}>
               <div className="lc-rev-card">
-                <div
-                  className="lc-rev-avatar"
-                  style={{ background: reviews[revIdx].color }}
-                  aria-hidden="true"
-                >
+                <div className="lc-rev-avatar" style={{ background: reviews[revIdx].color }} aria-hidden="true">
                   {reviews[revIdx].init}
                 </div>
                 <p className="lc-rev-quote">"{reviews[revIdx].text}"</p>
